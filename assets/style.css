@@ -8,3 +8,13 @@
 form {
     display: none;
 }
+
+.read {
+    color: white;
+    background-color: rgb(91, 151, 0);
+}
+
+.unread {
+    color: white;
+    background-color: rgb(151, 0, 0);
+}
