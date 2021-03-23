@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-
-    <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
     <button type="button" id="displayForm" onclick="displayForm()">
-        Add a new book
+      Add a new book
     </button>
-    <form id="createBookForm" >
-        <label>Title</label><input id="title"></input>
-        <label>Author</label><input id="author"></input>
-        <label># of pages</label><input id="nop"></input>
-        <button type="button" id="createBook" onclick="addBookToLibrary()">
-            Add a new book
-        </button>
+    <form id="createBookForm">
+      <label>Title</label><input id="title" /> <label>Author</label
+      ><input id="author" /> <label># of pages</label><input id="nop" />
+      <button type="button" id="createBook" onclick="addBookToLibrary()">
+        Add a new book
+      </button>
     </form>
-    <div id="container">
 
-    </div>
+    <div id="container" class="container"></div>
 
     <script src="assets/application.js"></script>
-</body>
+  </body>
 </html>

@@ -1,20 +1,26 @@
 .card {
-    width: 250px;
-    height: 300px;
-    border: 1px rgba(143, 143, 143,.2) solid;
-    padding: 10px;
+  width: 150px;
+  height: 200px;
+  border: 1px rgba(143, 143, 143, 0.2) solid;
+  padding: 10px;
+  margin: 10px;
 }
 
 form {
-    display: none;
+  display: none;
 }
 
 .read {
-    color: white;
-    background-color: rgb(91, 151, 0);
+  color: white;
+  background-color: rgb(91, 151, 0);
 }
 
 .unread {
-    color: white;
-    background-color: rgb(151, 0, 0);
+  color: white;
+  background-color: rgb(151, 0, 0);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
 }
