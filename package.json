@@ -1,0 +1,25 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "A library made with JS",
+  "main": "assets/application.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamed-js/Library.git"
+  },
+  "author": "Mohamed-js/alvaro-rf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mohamed-js/Library/issues"
+  },
+  "homepage": "https://github.com/Mohamed-js/Library#readme",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "firebase": "^8.3.1"
+  }
+}
