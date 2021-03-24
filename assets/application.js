@@ -1,11 +1,14 @@
 const myLibrary = [];
 const cont = document.getElementById('container');
 
-function Book(title = '', nop = 0, author = 'unknown', read) {
-  this.title = title;
-  this.nop = nop;
-  this.author = author;
-  this.read = read;
+// 1st change 
+class Book {
+  constructor(title = '', nop = 0, author = 'unknown', read) {
+    this.title = title;
+    this.nop = nop;
+    this.author = author;
+    this.read = read;
+  }
 }
 
 function displayBooks() {
@@ -70,6 +73,7 @@ function addBookToLibrary() {
   const nop = document.getElementById('nop').value;
   const author = document.getElementById('author').value;
   const readStatus = document.getElementById('readStatus').value;
+  // 2nd and last change
   const book = new Book(title, nop, author, readStatus);
   myLibrary.push(book);
   displayBooks();
