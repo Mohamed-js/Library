@@ -8,13 +8,6 @@ function Book(title = '', nop = 0, author = 'unknown', read) {
   this.read = read;
 }
 
-function getButtons() {
-  var k = document.querySelectorAll('.deleteBook');
-  for (let i = 0;i < myLibrary.length;i++){
-    k[i].onclick = () => removeBook(i);
-  }
-}
-
 function displayBooks() {
   cont.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i += 1) {
@@ -50,7 +43,21 @@ function displayBooks() {
 
     cont.appendChild(card);
   }
-  getButtons()
+  /* eslint-disable no-use-before-define */
+  getButtons();
+  /* eslint-enable no-use-before-define */
+}
+
+function removeBook(book) {
+  myLibrary.splice(book, 1);
+  displayBooks();
+}
+
+function getButtons() {
+  const k = document.querySelectorAll('.deleteBook');
+  for (let i = 0; i < myLibrary.length; i += 1) {
+    k[i].onclick = () => removeBook(i);
+  }
 }
 
 function hideForm() {
@@ -110,18 +117,15 @@ function displayForm() {
   form.appendChild(select);
   form.appendChild(btn);
 
-  document.body.appendChild(form);
+  const dispFormButton = document.getElementById('displayForm');
+  const { body } = document;
+  body.insertBefore(form, dispFormButton);
 
   const createBookk = document.getElementById('createBook');
   createBookk.onclick = () => addBookToLibrary();
   document.getElementById('displayForm').style.display = 'none';
 }
-
-function removeBook(book) {
-  myLibrary.splice(book, 1);
-  displayBooks();
-}
-
+/* eslint-disable no-unused-vars */
 function read(book) {
   displayBooks();
   if (myLibrary[book].read === 'read') {
@@ -136,9 +140,7 @@ function read(book) {
     document.getElementById(`${book}`).classList.add('read');
   }
 }
+/* eslint-enable no-unused-vars */
 
 const displayFormm = document.getElementById('displayForm');
 displayFormm.onclick = () => displayForm();
-
-
-
