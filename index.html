@@ -14,13 +14,17 @@
     <form id="createBookForm">
       <label>Title</label><input id="title" /> <label>Author</label
       ><input id="author" /> <label># of pages</label><input id="nop" />
+      <select name="read_status" id="read_status">
+        <option value="read">Read</option>
+        <option value="unread">unread</option>
+      </select>
       <button type="button" id="createBook">
         Add a new book
       </button>
     </form>
 
     <div id="container" class="container"></div>
-
+    <script src="assets/setlocalstorage.js"></script>
     <script src="assets/application.js"></script>
   </body>
 </html>
