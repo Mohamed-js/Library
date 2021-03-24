@@ -1,7 +1,9 @@
+/* eslint-disable max-classes-per-file */
+/* eslint-disable class-methods-use-this */
 const myLibrary = [];
 const cont = document.getElementById('container');
 class Book {
-  constructor(title = '', nop = 0, author = 'unknown', read){
+  constructor(title = '', nop = 0, author = 'unknown', read) {
     this.title = title;
     this.nop = nop;
     this.author = author;
@@ -9,7 +11,7 @@ class Book {
   }
 }
 
-class libraryMethods {
+class LibraryMethods {
   /* eslint-disable no-use-before-define */
   hideForm() {
     document.getElementById('createBookForm').remove();
@@ -26,7 +28,7 @@ class libraryMethods {
     this.displayBooks();
     this.hideForm();
   }
-// askjgadsfkjas
+
   displayBooks() {
     cont.innerHTML = '';
     for (let i = 0; i < myLibrary.length; i += 1) {
@@ -120,6 +122,7 @@ class libraryMethods {
     createBookk.onclick = () => this.addBookToLibrary();
     document.getElementById('displayForm').style.display = 'none';
   }
+
   /* eslint-disable no-unused-vars */
   read(book) {
     this.displayBooks();
@@ -135,6 +138,7 @@ class libraryMethods {
       document.getElementById(`${book}`).classList.add('read');
     }
   }
+
   getButtons() {
     const k = document.querySelectorAll('.deleteBook');
     for (let i = 0; i < myLibrary.length; i += 1) {
@@ -142,8 +146,11 @@ class libraryMethods {
     }
   }
   /* eslint-enable no-unused-vars */
-};
+}
 
 const displayFormm = document.getElementById('displayForm');
-myMethods = new libraryMethods;
+const myMethods = new LibraryMethods();
 displayFormm.onclick = () => myMethods.displayForm();
+
+/* eslint-enable max-classes-per-file */
+/* eslint-enable class-methods-use-this */
