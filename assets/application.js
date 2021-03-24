@@ -46,7 +46,7 @@ function displayBooks() {
 }
 
 function hideForm() {
-  document.getElementById('createBookForm').style.display = 'none';
+  document.getElementById('createBookForm').remove()
   document.getElementById('displayForm').style.display = 'block';
 }
 
@@ -62,11 +62,50 @@ function addBookToLibrary() {
 }
 
 function displayForm() {
-  document.getElementById('createBookForm').style.display = 'block';
-  document.getElementById('displayForm').style.display = 'none';
-  document.getElementById('title').value = '';
-  document.getElementById('author').value = '';
-  document.getElementById('nop').value = '';
+  let form = document.createElement('form');
+  let title = document.createElement('input');
+  let author = document.createElement('input');
+  let nop = document.createElement('input');
+  let select = document.createElement('select');
+  let opt1 = document.createElement('option');
+  let opt2 = document.createElement('option');
+  let btn = document.createElement('button');
+
+  let authorL = document.createElement('label');
+  authorL.textContent = 'Author'
+  let titleL = document.createElement('label');
+  titleL.textContent = 'Title'
+  let nopL = document.createElement('label');
+  nopL.textContent = '#Pages'
+
+  form.id = 'createBookForm'
+  title.id = 'title'
+  author.id = 'author'
+  select.id = 'read_status'
+  nop.id = 'nop'
+  opt1.value = 'read'
+  opt1.textContent = 'read'
+  opt2.value = 'unread'
+  opt2.textContent = 'unread'
+  btn.type = 'button'
+  btn.id = 'createBook'
+  btn.textContent = 'Add'
+
+  select.appendChild(opt1)
+  select.appendChild(opt2)
+  form.appendChild(titleL)
+  form.appendChild(title)
+  form.appendChild(authorL)
+  form.appendChild(author)
+  form.appendChild(nopL)
+  form.appendChild(nop)
+  form.appendChild(select)
+  form.appendChild(btn)
+
+  document.body.appendChild(form)
+
+  const createBookk = document.getElementById('createBook');
+  createBookk.onclick = () => addBookToLibrary()
 }
 
 function removeBook(book) {
@@ -89,8 +128,9 @@ function read(book) {
   }
 }
 
-const createBookk = document.getElementById('createBook');
-const displayFormm = document.getElementById('displayForm');
 
+const displayFormm = document.getElementById('displayForm');
 displayFormm.onclick = () => displayForm();
-createBookk.onclick = () => addBookToLibrary();
+
+
+
