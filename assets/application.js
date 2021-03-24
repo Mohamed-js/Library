@@ -11,12 +11,12 @@ function Book(title = '', nop = 0, author = 'unknown', read) {
 function displayBooks() {
   cont.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i += 1) {
-    let card = document.createElement('div');
-    let head = document.createElement('h3');
-    let author = document.createElement('h6');
-    let read = document.createElement('button');
-    let nop = document.createElement('p');
-    let deleteBook = document.createElement('button');
+    const card = document.createElement('div');
+    const head = document.createElement('h3');
+    const author = document.createElement('h6');
+    const read = document.createElement('button');
+    const nop = document.createElement('p');
+    const deleteBook = document.createElement('button');
 
     card.classList.add('card');
 
@@ -33,7 +33,8 @@ function displayBooks() {
 
     nop.textContent = myLibrary[i].nop;
     deleteBook.textContent = 'Remove this book';
-    deleteBook.setAttribute('onclick', `removeBook(${i})`);
+    // deleteBook.setAttribute('onclick', `removeBook(${i})`);
+    deleteBook.classList.add('deleteBook');
 
     card.appendChild(head);
     card.appendChild(author);
@@ -43,74 +44,76 @@ function displayBooks() {
 
     cont.appendChild(card);
   }
+  getButtons();
 }
 
 function hideForm() {
-  document.getElementById('createBookForm').remove()
+  document.getElementById('createBookForm').remove();
   document.getElementById('displayForm').style.display = 'block';
 }
 
 function addBookToLibrary() {
-  let title = document.getElementById('title').value;
-  let nop = document.getElementById('nop').value;
-  let author = document.getElementById('author').value;
-  let read_status = document.getElementById('read_status').value;
-  let book = new Book(title, nop, author, read_status);
+  const title = document.getElementById('title').value;
+  const nop = document.getElementById('nop').value;
+  const author = document.getElementById('author').value;
+  const readStatus = document.getElementById('readStatus').value;
+  const book = new Book(title, nop, author, readStatus);
   myLibrary.push(book);
   displayBooks();
   hideForm();
 }
 
 function displayForm() {
-  let form = document.createElement('form');
-  let title = document.createElement('input');
-  let author = document.createElement('input');
-  let nop = document.createElement('input');
-  let select = document.createElement('select');
-  let opt1 = document.createElement('option');
-  let opt2 = document.createElement('option');
-  let btn = document.createElement('button');
+  const form = document.createElement('form');
+  const title = document.createElement('input');
+  const author = document.createElement('input');
+  const nop = document.createElement('input');
+  const select = document.createElement('select');
+  const opt1 = document.createElement('option');
+  const opt2 = document.createElement('option');
+  const btn = document.createElement('button');
 
-  let authorL = document.createElement('label');
-  authorL.textContent = 'Author'
-  let titleL = document.createElement('label');
-  titleL.textContent = 'Title'
-  let nopL = document.createElement('label');
-  nopL.textContent = '#Pages'
+  const authorL = document.createElement('label');
+  authorL.textContent = 'Author';
+  const titleL = document.createElement('label');
+  titleL.textContent = 'Title';
+  const nopL = document.createElement('label');
+  nopL.textContent = '#Pages';
 
-  form.id = 'createBookForm'
-  title.id = 'title'
-  author.id = 'author'
-  select.id = 'read_status'
-  nop.id = 'nop'
-  opt1.value = 'read'
-  opt1.textContent = 'read'
-  opt2.value = 'unread'
-  opt2.textContent = 'unread'
-  btn.type = 'button'
-  btn.id = 'createBook'
-  btn.textContent = 'Add'
+  form.id = 'createBookForm';
+  title.id = 'title';
+  author.id = 'author';
+  select.id = 'readStatus';
+  nop.id = 'nop';
+  opt1.value = 'read';
+  opt1.textContent = 'read';
+  opt2.value = 'unread';
+  opt2.textContent = 'unread';
+  btn.type = 'button';
+  btn.id = 'createBook';
+  btn.textContent = 'Add';
 
-  select.appendChild(opt1)
-  select.appendChild(opt2)
-  form.appendChild(titleL)
-  form.appendChild(title)
-  form.appendChild(authorL)
-  form.appendChild(author)
-  form.appendChild(nopL)
-  form.appendChild(nop)
-  form.appendChild(select)
-  form.appendChild(btn)
+  select.appendChild(opt1);
+  select.appendChild(opt2);
+  form.appendChild(titleL);
+  form.appendChild(title);
+  form.appendChild(authorL);
+  form.appendChild(author);
+  form.appendChild(nopL);
+  form.appendChild(nop);
+  form.appendChild(select);
+  form.appendChild(btn);
 
-  document.body.appendChild(form)
+  document.body.appendChild(form);
 
   const createBookk = document.getElementById('createBook');
-  createBookk.onclick = () => addBookToLibrary()
+  createBookk.onclick = () => addBookToLibrary();
 }
 
 function removeBook(book) {
   myLibrary.splice(book, 1);
   displayBooks();
+  console.log('This is being called');
 }
 
 function read(book) {
@@ -128,9 +131,14 @@ function read(book) {
   }
 }
 
-
 const displayFormm = document.getElementById('displayForm');
 displayFormm.onclick = () => displayForm();
 
-
+function getButtons() {
+  var k = document.querySelectorAll('.deleteBook');
+  console.log(k);
+  for (let i = 0;i < myLibrary.length;i++){
+    k[i].addEventListener('click',removeBook(i));
+  }
+}
 
