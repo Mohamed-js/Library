@@ -1,7 +1,7 @@
 const myLibrary = [];
 const cont = document.getElementById('container');
 
-function Book(title = '', nop = 0, author = 'unknown', read = 'unread') {
+function Book(title = '', nop = 0, author = 'unknown', read) {
   this.title = title;
   this.nop = nop;
   this.author = author;
@@ -54,7 +54,8 @@ function addBookToLibrary() {
   let title = document.getElementById('title').value;
   let nop = document.getElementById('nop').value;
   let author = document.getElementById('author').value;
-  let book = new Book(title, nop, author);
+  let read_status = document.getElementById('read_status').value;
+  let book = new Book(title, nop, author, read_status);
   myLibrary.push(book);
   displayBooks();
   hideForm();
