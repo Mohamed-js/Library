@@ -8,6 +8,13 @@ function Book(title = '', nop = 0, author = 'unknown', read) {
   this.read = read;
 }
 
+function getButtons() {
+  var k = document.querySelectorAll('.deleteBook');
+  for (let i = 0;i < myLibrary.length;i++){
+    k[i].onclick = () => removeBook(i);
+  }
+}
+
 function displayBooks() {
   cont.innerHTML = '';
   for (let i = 0; i < myLibrary.length; i += 1) {
@@ -33,7 +40,6 @@ function displayBooks() {
 
     nop.textContent = myLibrary[i].nop;
     deleteBook.textContent = 'Remove this book';
-    // deleteBook.setAttribute('onclick', `removeBook(${i})`);
     deleteBook.classList.add('deleteBook');
 
     card.appendChild(head);
@@ -44,7 +50,7 @@ function displayBooks() {
 
     cont.appendChild(card);
   }
-  getButtons();
+  getButtons()
 }
 
 function hideForm() {
@@ -108,12 +114,12 @@ function displayForm() {
 
   const createBookk = document.getElementById('createBook');
   createBookk.onclick = () => addBookToLibrary();
+  document.getElementById('displayForm').style.display = 'none';
 }
 
 function removeBook(book) {
   myLibrary.splice(book, 1);
   displayBooks();
-  console.log('This is being called');
 }
 
 function read(book) {
@@ -134,11 +140,5 @@ function read(book) {
 const displayFormm = document.getElementById('displayForm');
 displayFormm.onclick = () => displayForm();
 
-function getButtons() {
-  var k = document.querySelectorAll('.deleteBook');
-  console.log(k);
-  for (let i = 0;i < myLibrary.length;i++){
-    k[i].addEventListener('click',removeBook(i));
-  }
-}
+
 
