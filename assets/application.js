@@ -1,29 +1,33 @@
 const myLibrary = [];
 const cont = document.getElementById('container');
+class Book {
+  constructor(title = '', nop = 0, author = 'unknown', read){
+    this.title = title;
+    this.nop = nop;
+    this.author = author;
+    this.read = read;
+  }
+}
 
-const Book = (title = '', nop = 0, author = 'unknown', read) => ({
-  title, nop, author, read,
-});
-
-const libraryMethods = (function myfunc() {
+class libraryMethods {
   /* eslint-disable no-use-before-define */
-  function hideForm() {
+  hideForm() {
     document.getElementById('createBookForm').remove();
     document.getElementById('displayForm').style.display = 'block';
   }
 
-  function addBookToLibrary() {
+  addBookToLibrary() {
     const title = document.getElementById('title').value;
     const nop = document.getElementById('nop').value;
     const author = document.getElementById('author').value;
     const readStatus = document.getElementById('readStatus').value;
-    const book = Book(title, nop, author, readStatus);
+    const book = new Book(title, nop, author, readStatus);
     myLibrary.push(book);
-    displayBooks();
-    hideForm();
+    this.displayBooks();
+    this.hideForm();
   }
 
-  function displayBooks() {
+  displayBooks() {
     cont.innerHTML = '';
     for (let i = 0; i < myLibrary.length; i += 1) {
       const card = document.createElement('div');
@@ -38,7 +42,7 @@ const libraryMethods = (function myfunc() {
       head.textContent = myLibrary[i].title;
       author.textContent = myLibrary[i].author;
       read.textContent = myLibrary[i].read;
-      read.setAttribute('onclick', `libraryMethods.read(${i})`);
+      read.setAttribute('onclick', `myMethods.read(${i})`);
       read.id = i;
       if (read.textContent === 'read') {
         read.classList.add('read');
@@ -58,16 +62,16 @@ const libraryMethods = (function myfunc() {
 
       cont.appendChild(card);
     }
-    getButtons();
+    this.getButtons();
     /* eslint-enable no-use-before-define */
   }
 
-  function removeBook(book) {
+  removeBook(book) {
     myLibrary.splice(book, 1);
-    displayBooks();
+    this.displayBooks();
   }
 
-  function displayForm() {
+  displayForm() {
     const form = document.createElement('form');
     const title = document.createElement('input');
     const author = document.createElement('input');
@@ -113,12 +117,12 @@ const libraryMethods = (function myfunc() {
     body.insertBefore(form, dispFormButton);
 
     const createBookk = document.getElementById('createBook');
-    createBookk.onclick = () => addBookToLibrary();
+    createBookk.onclick = () => this.addBookToLibrary();
     document.getElementById('displayForm').style.display = 'none';
   }
   /* eslint-disable no-unused-vars */
-  function read(book) {
-    displayBooks();
+  read(book) {
+    this.displayBooks();
     if (myLibrary[book].read === 'read') {
       myLibrary[book].read = 'unread';
       document.getElementById(`${book}`).textContent = 'Unread';
@@ -131,17 +135,15 @@ const libraryMethods = (function myfunc() {
       document.getElementById(`${book}`).classList.add('read');
     }
   }
-  function getButtons() {
+  getButtons() {
     const k = document.querySelectorAll('.deleteBook');
     for (let i = 0; i < myLibrary.length; i += 1) {
-      k[i].onclick = () => removeBook(i);
+      k[i].onclick = () => this.removeBook(i);
     }
   }
   /* eslint-enable no-unused-vars */
-  return {
-    getButtons, hideForm, addBookToLibrary, displayBooks, removeBook, displayForm, read,
-  };
-}());
+};
 
 const displayFormm = document.getElementById('displayForm');
-displayFormm.onclick = () => libraryMethods.displayForm();
+myMethods = new libraryMethods;
+displayFormm.onclick = () => myMethods.displayForm();
