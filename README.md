@@ -30,7 +30,7 @@ In this project we:
 
 - Github: [@alvarorf](https://github.com/alvarorf)
 - Twitter: [@aaruizf](https://twitter.com/aaruizf)
-- Linkedin: [linkedin](https://www.linkedin.com/in/alvaro-r-22810915a/)
+- Linkedin: [linkedin](https://www.linkedin.com/in/alvaro-andr%C3%A9s-ruiz-florez/)
 
 👤 **Mohammed Atef**
 
